@@ -1,4 +1,78 @@
- 
+Задание №1
+
+a = int("Как вас зовут?")
+b = int(input("Сколько вам лет?"))
+c = int(input("Введите любое число "))
+
+print(a , b , c)
 
 
- push
+
+
+Задание №2
+
+tame = int(input("Введите время в секундах"))
+hours = time // 3600
+minutes = (time - hours * 3600)  // 60
+seconds = time - (hours * 3600 + minutes * 60)
+
+print(f"Время в формате чч:мм:сс )
+
+
+
+
+Задание №3
+
+n=int(input("Введите число"))
+total = (n +int(n) + str(n)) + int(str(n) + str(n) +str(n))
+
+print("Сумма чисел n + nn + nnn")
+
+
+
+
+Заданиу №4
+
+n = ads(int(input("Введите целое положительное число")))
+max = n % 10 
+while n >= 1
+    n = n // 10
+    if n % 10 > max   
+       max = n % 10
+    if n > 9
+       continue
+    else : 
+
+       print("Максимальная цифра в числе " , max)
+       dreak
+
+
+
+
+ Задание №5
+
+ profit = float(input("Введите выручку фирмы"))
+ costs = float(input("Введите издержки фирмы"))
+if profit > costs
+    print(f"Фирма работает с прыболью.Рентабельность выручки составила {profit / costs: .2f}")
+    workers = int(input("Введите количество сотрудников фирмы"))
+    print(f"Приболь в расчете на одного сотрудника составила {profit / workers: .2f}")
+elif profit == costs :
+     print("Фирма работает в ноль")
+else:
+     print("Фирма работает в убыток")
+
+
+
+
+Задание №6
+
+a = int(input("Введите результаты пробежки первого дня в км"))
+b = int(input("Введите общий желаемый результат в км"))
+result_days = 1
+result_km = adswhile result_km < b:
+               a = a + 0.1 * a
+               result_days +=1
+               result_km = result_days + a
+ print(f"Вы достигнете требуемых результатов на %.d день ")
+               
