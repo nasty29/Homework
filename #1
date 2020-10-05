@@ -4,8 +4,7 @@ a = int("Как вас зовут?")
 b = int(input("Сколько вам лет?"))
 c = int(input("Введите любое число "))
 
-print(a , b , c)
-
+print(a , b ,c)
 
 
 
