@@ -1,49 +1,169 @@
-Задание 1
+'''1. Пользователь вводит данные о количестве предприятий, их наименования и
+прибыль за 4 квартала (т.е. 4 отдельных числа) для каждого предприятия.
+Программа должна определить среднюю прибыль (за год для всех предприятий) и
+вывести наименования предприятий, чья прибыль выше среднего и отдельно вывести
+наименования предприятий, чья прибыль ниже среднего.
+Примечание: для решения задач попробуйте применить какую-нибудь коллекцию из
+модуля collections
+'''
+
+import collections
+import random
 
 
-from sys import argv
+def sum_tuple(numbers):
+    '''tuple --> sum'''
 
-name, time, salary, bonus = argv
-try:
-    time = int(time)
-    salary = int(salary)
-    bonus = int(bonus)
-    res = time * salary + bonus
-    print(f'заработная плата сотрудника  {res}')
-except ValueError:
-    print('Not a number')
+    total_sum = 0
+    for sum_q in numbers:
+        total_sum += sum_q
+        return total_sum
 
 
+Enterprise = collections.namedtuple('Enterprise', ['q1', 'q2', 'q3', 'q4'])
+
+base_enterprise = {}
+
+n = int(input("Количество предприятий: "))
+
+for i in range(n):
+    name = input(str(i+1) + '-е предприятие: ')
+    profit_q1 = int(input('Прибыль за 1-й квартал: '))
+    profit_q2 = int(input('Прибыль за 2-й квартал: '))
+    profit_q3 = int(input('Прибыль за 3-й квартал: '))
+    profit_q4 = int(input('Прибыль за 4-й квартал: '))
+    base_enterprise[name] = Enterprise(
+        q1=profit_q1,
+        q2=profit_q2,
+        q3=profit_q3,
+        q4=profit_q4
+    )
+
+base_enterprise['Name1'] = Enterprise(
+    q1=random.randint(100, 500),
+    q2=random.randint(100, 500),
+    q3=random.randint(100, 500),
+    q4=random.randint(100, 500)
+)
+
+base_enterprise['Name2'] = Enterprise(
+    q1=random.randint(100, 500),
+    q2=random.randint(100, 500),
+    q3=random.randint(100, 500),
+    q4=random.randint(100, 500)
+)
+
+total_profit = ()
+
+for name, profit in base_enterprise.items():
+    print(f'Предприятие: {name} прибыль за год - {sum(profit)}')
+    total_profit += profit
+
+avg_profit_total = sum(total_profit) / len(base_enterprise)
+print(f'Средняя прибыль за год для всех предприятий {avg_profit_total}')
+
+print('Предприятия, у которых прибыль выше среднего:')
+
+for name, profit in base_enterprise.items():
+    if sum(profit) > avg_profit_total:
+        print(f'{name} - {sum(profit)}')
+
+for name, profit in base_enterprise.items():
+    if sum(profit) < avg_profit_total:
+        print(f'{name} - {sum(profit)}')
 
 
-    Задание 2 
-
-    my_list = [15, 2, 3, 1, 7, 5, 4, 10]
-my_new_list = [el for num, el in enumerate(my_list) if my_list[num - 1] < my_list[num]]
-print(f'Исходный список {my_list}')
-print(f'Новый список {my_new_list}')
 
 
 
-Задание 3 
-
-print(f'Числа от 20 до 240 кратные 20 или 21 - {[el for el in range(20, 241) if el % 20 == 0 or el % 21 == 0]}'
-
-
-
-Задание 4
+'''2.Написать программу сложения и умножения двух шестнадцатеричных чисел. При этом каждое число представляется как коллекция, элементы которой это цифры числа.
+Например, пользователь ввёл A2 и C4F. Сохранить их как [‘A’, ‘2’] и [‘C’, ‘4’, ‘F’] соответственно. Сумма чисел из примера: [‘C’, ‘F’, ‘1’], произведение - [‘7’, ‘C’, ‘9’, ‘F’, ‘E’].
+'''
 
 
 
+def  sum_hex ( x , y ):
+    HEX_NUM  = { '0' : 0 , '1' : 1 , '2' : 2 , '3' : 3 , '4' : 4 , '5' : 5 , '6' : 6 , '7' : 7 , '8' : 8 , '9' : 9 ,
+               'A' : 10 , 'B' : 11 , 'C' : 12 , 'D' : 13 , 'E' : 14 , 'F' : 15 ,
+               0 : «0» , 1 : «1» , 2 : «2» , 3 : «3» , 4 : «4» , 5 : «5» , 6 : «6» , 7 : «7» , 8 : '8' , 9 : '9' ,
+               10 : 'A' , 11 : 'B' , 12 : 'C' , 13 : 'D' , 14 : 'E' , 15 : 'F' }
+    результат  =  deque ()
+    передача  =  0
+
+    если  len ( y ) >  len ( x ):
+        x , y  =  двухсторонняя ( y ), двухсторонняя ( x )
+
+    еще :
+        x , y  =  двухсторонняя ( x ), двухсторонняя ( y )
+
+    а  x :
+
+        если  y :
+            res  =  HEX_NUM [ x . pop ()] +  HEX_NUM [ y . pop ()] +  перевод
+
+        еще :
+            res  =  HEX_NUM [ x . pop ()] +  перевод
+
+        передача  =  0
+
+        если  res  <  16 :
+            результат . appendleft ( HEX_NUM [ разрешение ])
+
+        еще :
+            результат . appendleft ( HEX_NUM [ разрешение  -  16 ])
+            передача  =  1
+
+    если  перевод :
+        результат . appendleft ( '1' )
+
+     список возврата ( результат )
 
 
-Задание 5
+def  mult_hex ( x , y ):
+    HEX_NUM  = { '0' : 0 , '1' : 1 , '2' : 2 , '3' : 3 , '4' : 4 , '5' : 5 , '6' : 6 , '7' : 7 , '8' : 8 , '9' : 9 ,
+               'A' : 10 , 'B' : 11 , 'C' : 12 , 'D' : 13 , 'E' : 14 , 'F' : 15 ,
+               0 : «0» , 1 : «1» , 2 : «2» , 3 : «3» , 4 : «4» , 5 : «5» , 6 : «6» , 7 : «7» , 8 : '8' , 9 : '9' ,
+               10 : 'A' , 11 : 'B' , 12 : 'C' , 13 : 'D' , 14 : 'E' , 15 : 'F' }
+    результат  =  deque ()
+    spam  =  deque ([ deque () for  _  in  range ( len ( y ))])
 
-from functools import reduce
+    х , у  =  х . copy (), deque ( y )
+
+    для  i  в  диапазоне ( len ( y )):
+        m  =  HEX_NUM [ y . pop ()]
+
+        для  j  в  диапазоне ( len ( x ) -  1 , - 1 , - 1 ):
+            спам [ i ]. appendleft ( m  *  HEX_NUM [ x [ j ]])
+
+        для  _  в  диапазоне ( i ):
+            спам [ i ]. добавить ( 0 )
+
+    передача  =  0
+
+    для  _  в  диапазоне ( len ( spam [ - 1 ])):
+        res  =  передача
+
+        для  i  в  диапазоне ( len ( спам )):
+            если  спам [ i ]:
+                res  + =  спам [ i ]. поп ()
+
+        если  res  <  16 :
+            результат . appendleft ( HEX_NUM [ разрешение ])
+
+        еще :
+            результат . appendleft ( HEX_NUM [ res  %  16 ])
+            передача  =  res  //  16
+
+    если  перевод :
+            результат . appendleft ( HEX_NUM [ перевод ])
+
+     список возврата ( результат )
 
 
-def my_func(el_p, el):
-    return el_p * el
+a  =  list ( input ( 'Введите 1-е шестнадцатиричное число:' ). upper ())
+b  =  list ( input ( 'Введите 2-е шестнадцатиричное число:' ). upper ())
+# print (a, b)
 
-print(f'Список четных значений {[el for el in range(99, 1001) if el % 2 == 0]}')
-print(f'Результат перемножения всех элементов списка {reduce(my_func, [el for el in range(99, 1001) if el % 2 == 0])}')
+print ( * a , '+' , * b , '=' , * sum_hex ( a , b ))
+
+print ( * a , '*' , * b , '=' , * mult_hex ( a , b ))
